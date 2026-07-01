@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# 1. Registrar en el escritorio que LiamWinmer está en acción
+echo "LiamWinmer v0.2 interceptando el lanzamiento del juego: $(date)" >> /home/deck/Desktop/liamwinmer_log.txt
+echo "Argumentos enviados por Steam: $@" >> /home/deck/Desktop/liamwinmer_log.txt
+
+# 2. Definir la ruta real de GE-Proton11-1 que tiene todos los archivos listos y funcionando
+GE_PROTON_DIR="/home/deck/.steam/steam/compatibilitytools.d/GE-Proton11-1"
+
+# 3. Forzar a que use tu versión de Prefix si lo deseas, o dejar que use la estándar para que no falle
+export CURRENT_PREFIX_VERSION="LiamWinmer-v0.2"
+
+# 4. PASARLE EL JUEGO AL SCRIPT ORIGINAL DE GE-PROTON
+# Esto ejecuta el juego usando todo el poder de GE-Proton, pero corriendo a través de tu carpeta
+if [ -f "$GE_PROTON_DIR/proton" ]; then
+    python3 "$GE_PROTON_DIR/proton" "$@"
+else
+    echo "ERROR: No se encontró el script original de GE-Proton en la ruta." >> /home/deck/Desktop/liamwinmer_log.txt
+fi
