@@ -1,0 +1,13 @@
+"compatibilitytools"
+{
+  "compat_tools"
+  {
+    "LiamWinmer"
+    {
+      "install_path" "."
+      "display_name" "LiamWinmer v0.1"
+      "from_oslist"  "windows"
+      "to_oslist"    "linux"
+    }
+  }
+}
